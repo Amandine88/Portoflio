@@ -1,0 +1,226 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+    line-height: 1.6;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+}
+:root {
+    --text-color: #3F2A2E;
+    --background-color:  #FDEDEC;
+    --accent: #9C3D54;
+    --head: #F5CAC3;
+}
+header {
+    background-color: var(--head);
+    color: var(--text-color);
+    padding: 1rem 0;
+    text-align: center;
+}
+nav {
+    position: sticky;
+    top:0;
+    z-index: 10;
+    background-color: var(--head);
+    padding: 0.5rem 1rem;
+}
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+}
+section {
+    padding: 1rem;
+    background-color: var(--head);
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    scroll-margin-top: 4rem;
+}
+#apropos{
+    grid-column: span 3;
+}
+#formation{
+    grid-column: span 2;
+}
+#projets {
+    grid-column: span 2;
+}
+/* @keyframes animation from (invisible, lower) to (visibility); */
+/* section:nth-child(2) {0,3s}; */
+    h1,h2,h3 {
+        margin-bottom: 1rem ;
+        color: var(--text-color);
+        font-family: "Montserrat",sans-serif;
+    }
+
+    nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    list-style: none;
+}
+html {
+    scroll-behavior: smooth;
+}
+nav a {
+    text-decoration: none;
+    color: var(--accent);
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    position: relative;
+}
+nav a:hover {
+    background-color: var(--accent);
+    color: var(--head);
+    border-radius: 5px;
+}
+nav a::after {
+content : "" ;
+position: absolute;
+left: 0;
+bottom: 0;
+width: 0;
+height: 2px;
+background-color: var(--accent);
+transition: width 0.3s ;
+}
+nav a:hover::after {
+    width: 100%;
+}
+article {
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    background-color: var(--background-color);
+    border-left: 5px solid var(--accent);
+    transition: transform 0.3s ease;
+}
+article:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+a {
+    color: var(--accent);
+}
+a:focus,
+a:hover {
+    text-decoration: var(--text-color);
+}
+.burger{
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.burger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--accent);
+    margin: 5px 0;
+    transition: transform 0.3s, opacity 0.3s;
+}
+.burger.active span:nth-child(1){
+    transform:  translateY(8px) rotate(45deg);
+}
+.burger.active span:nth-child(2){
+    opacity: 0;
+}
+.burger.active span:nth-child(3){
+    transform:  translateY(-8px) rotate(-45deg);
+}
+footer{
+    background-color: var(--head);
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+footer p {
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+.formes{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+.f1, .f2, .f3, .f4, .f5 {
+    position: absolute;
+    border-radius: 50%;
+    background-color: var(--accent);
+    opacity: 0.15;
+}
+.f1{
+width: 250px;
+height: 250px;
+top: 5%;
+right: -50px;
+}
+.f2{
+width: 150px;
+height: 150px;
+bottom: 10%;
+left: -30%;
+}
+.f3{
+width: 80px;
+height: 80px;
+top: 50%;
+left: 20%;
+}
+.f4{
+    background-color: var(--head);
+    opacity: 0.3;
+    top: 150px;
+    right:-30px;
+    width: 150px;
+    height: 100px;
+}
+.f5 {
+    background-color: var(--head);
+    opacity: 0.3;
+    bottom: 100px;
+    left: -10px;
+    width: 100px;
+    height: 90px;
+}
+@media (max-width: 600px) {
+    nav ul {
+        flex-direction: column;
+        gap: 4px;
+    }
+    main {
+        padding: 5px;
+        grid-template-columns: 1fr;
+    }
+    #apropos, #projets, #formation {
+        grid-column: auto;
+    }
+    .burger {
+        display: block;
+    }
+    nav ul{
+       display: none;
+
+    }
+    nav ul.open{
+        display: flex;
+    }
+}
